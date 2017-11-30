@@ -1,0 +1,21 @@
+library(corrplot)
+install.packages("corrplot")
+data=read.table("hccv2.csv",header=T,sep=",")
+
+data=data[,-1]
+head(data)
+
+for (i in seq_along(data)) set(data, i=which(is.na(data[[i]])), j=i, value=0)
+str(data)
+dimnames(t)=list(x,x)
+x=c(19,18,85,108,96,88,12,111,22,40,23,48,79,137,11,58,10,78,161,135,47,136,9)
+colnames(t)=list(c(19,18,85,108,96,88,12,111,22,40,23,48,79,137,11,58,10,78,161,135,47,136,9))
+
+t=round(cor(data),2)
+
+
+x=c(19,18,85,108,96,88,12,111,22,40,23,48,79,137,11,58,10,78,161,135,47,136,9)
+dimnames(t)=list(x,x)
+
+str(t)	
+corrplot(t,method="circle",type="upper",order="hclust")
