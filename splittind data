@@ -1,0 +1,13 @@
+data=read.csv("attrition.csv",header=T,sep=",")
+data
+
+
+set.seed(25)
+smp_size=floor(0.70*nrow(data))
+train_ind=sample(seq_len(nrow(data)),size=smp_size)
+
+train=data[train_ind,]
+test=data[-train_ind,]
+
+write.csv(train,"train.csv")
+write.csv(test,"test.csv")
